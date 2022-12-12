@@ -1,0 +1,23 @@
+<fieldset>
+    <legend>Sex:</legend>
+
+    <div *ngFor="let sex of GenderArr; index as i">
+        <input 
+        type="radio"
+        name="gender + {{id}}" 
+        value="{{sex}}"
+        (change)="radioChangeHandler($event)">
+        <i>{{sex}}</i>
+    </div>
+    <p><span>Gender is: </span><b>{{selectedGender}}</b></p>
+    <!-- <div>
+      <input type="radio" id="male" name="gender" value="male"
+             checked>
+      <label for="male">Male</label>
+    </div>
+
+    <div>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label>
+    </div> -->
+</fieldset>

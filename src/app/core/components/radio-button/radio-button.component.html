@@ -1,0 +1,13 @@
+<div class="mf-radio-button">
+    {{unique}}
+      <div *ngFor="let option of options; index as i">
+      <input    type="radio" 
+                [id]="unique + i" 
+                [name]="unique" 
+                [value]="option"
+                [(ngModel)]="value"
+                (change)="onChange()" 
+                [checked]="option == value? 'checked' : ''"/>
+      <label [for]="unique + i" [innerText]="option"></label>
+    </div>
+</div>

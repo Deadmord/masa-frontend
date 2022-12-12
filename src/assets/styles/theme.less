@@ -1,18 +1,31 @@
+@background-color: #F0F0F0;
 @brand-color: dodgerblue;
 @font-base-size: 16px;
 @font-family: "Lato";
 @border-width: 1px;
-@header-heigth: 3em;
-@footer-height: 5em;
-@footer-with-border: @border-width+@footer-height+@border-width;
+@header-height: 3em;
+@footer-height: 2.5em;
+@footer-with-border: @border-width + @footer-height + @border-width;
+
+//-------------Organizer--------------
+@organizer-color: #404040;
+@primary-color: #D03545;
+@dark-color: #303030;
+@light-color: #E0E0E0; 
+@hover-color: #606060;
+//------------/Organizer--------------
 
 
 .title {
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
-.horizontal-percent-width(@width-in-procent: 100%) {
-    width: @width-in-procent;
+.horizontal-percent-width(@width-in-percent: 100%) {
+    width: @width-in-percent;
     display: inline-block;
+}
+
+.clear-fix {
+    clear: both;
 }

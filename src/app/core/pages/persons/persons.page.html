@@ -1,0 +1,75 @@
+<div class="persons-page"> 
+    Hello world!
+    <br />
+    {{ myProperty.length }}
+    <div>
+        <span [innerHtml]="htmlProperty"></span>
+        <span [innerText]="myProperty"></span>
+    </div>
+
+    <div (click)="myProperty = 'NoK'">Click me 1!</div>
+    <div (click)="clickMyFunc()">Click me 2!</div>
+    
+    <hr />
+    <br />
+    
+    <mf-generic-radio-button
+        [options]="layoutOptions"
+        [layout]="Layout.Horizontal"
+        [(value)]="selectedPersonLayout"
+        >
+    </mf-generic-radio-button>
+    
+    <br />
+    <mf-generic-radio-button
+        [options]="personOptions"
+        [layout]="selectedPersonLayout"
+        [isMultiselect]="false"
+        [(value)]="selectedPerson"
+        >
+    </mf-generic-radio-button>
+    {{JSON.stringify(selectedPerson)}}
+    <br />
+
+    <div [innerHtml]="cardMessage"></div>
+    
+    <br />
+    <br />
+
+    <!--{{"Person = " + JSON.stringify(person)}}-->
+    
+    <mf-person-card *ngFor="let person of persons; index as i"
+        [id]="i"
+        [(personName)]="person.name"
+        [(personId)]="person.id"
+        [(personAddress)]="person.address"
+        [(personEmail)]="person.email"
+        [(personGender)]="person.gender"
+        [personBirthdate]="person.birthdate"
+        [personSalary]="person.salary"
+        (onModeChange)="onCardModeChanged($event, i)"
+        (onSaveClicked)="onSaveClicked()"
+    >
+    </mf-person-card>
+<!--
+    <div *ngIf="!persons">No data</div>
+-->
+    <hr/>
+</div>
+
+<!--
+        <div class="left-pane">
+        <div>Name</div>
+        <div>ID</div>
+        <div>Address</div>
+        <div>Email</div>
+    </div>
+    <div class="right-pane">
+        <div>
+            <div><input type="text" [(ngModel)]="person.name" /></div>
+            <div><input type="text" [(ngModel)]="person.id" /></div>
+            <div><input type="text" [(ngModel)]="person.address" /></div>
+            <div><input type="text" [(ngModel)]="person.email" /></div>
+        </div>
+    </div>
+-->
