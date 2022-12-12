@@ -1,4 +1,4 @@
-<div class="persons-page"> 
+<div class="persons-page">
     Hello world!
     <br />
     {{ myProperty.length }}
@@ -9,36 +9,37 @@
 
     <div (click)="myProperty = 'NoK'">Click me 1!</div>
     <div (click)="clickMyFunc()">Click me 2!</div>
-    
+
     <hr />
     <br />
-    
-    <mf-generic-radio-button
+
+    <mf-generic-multiselect
         [options]="layoutOptions"
         [layout]="Layout.Horizontal"
+        [isMultiselect]="false"
         [(value)]="selectedPersonLayout"
         >
-    </mf-generic-radio-button>
-    
+    </mf-generic-multiselect>
+    {{selectedPersonLayout}}
     <br />
-    <mf-generic-radio-button
+    <mf-generic-multiselect
         [options]="personOptions"
-        [layout]="selectedPersonLayout"
-        [isMultiselect]="false"
-        [(value)]="selectedPerson"
+        [layout]="selectedPersonLayout[0]"
+        [isMultiselect]="true"
+        [(value)]="selectedPersons"
         >
-    </mf-generic-radio-button>
-    {{JSON.stringify(selectedPerson)}}
+    </mf-generic-multiselect>
+    {{JSON.stringify(selectedPersons)}}
     <br />
 
     <div [innerHtml]="cardMessage"></div>
-    
+
     <br />
     <br />
 
     <!--{{"Person = " + JSON.stringify(person)}}-->
-    
-    <mf-person-card *ngFor="let person of persons; index as i"
+
+    <mf-person-card *ngFor="let person of personService.persons; index as i"
         [id]="i"
         [(personName)]="person.name"
         [(personId)]="person.id"
@@ -52,7 +53,7 @@
     >
     </mf-person-card>
 <!--
-    <div *ngIf="!persons">No data</div>
+    <div *ngIf="!personService.persons">No data</div>
 -->
     <hr/>
 </div>

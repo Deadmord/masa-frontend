@@ -8,8 +8,9 @@ import { PersonsPage } from "./pages/persons/persons.page";
 import { NotFoundPage } from "./pages/not-found/not-found.page";
 import { GenderComponent } from "./components/gender/gender.component";
 import { RadioButtonComponent } from './components/radio-button/radio-button.component';
-import { GenericRadioButtonComponent } from './components/generic-radio-button/generic-radio-button.component';
+import { GenericMultiselectComponent } from './components/generic-multiselect/generic-multiselect.component';
 import { DoublePipe } from "./pipes/double.pipe";
+import { PersonService } from "./services/person.service";
 
 const routes: Routes = [
     { path: States.persons, component: PersonsPage },
@@ -23,7 +24,7 @@ const routes: Routes = [
     NotFoundPage,
     GenderComponent,
     RadioButtonComponent,
-    GenericRadioButtonComponent,
+    GenericMultiselectComponent,
     DoublePipe
     ],
     imports: [
@@ -36,5 +37,9 @@ const routes: Routes = [
     ]
 })
 export class CoreModule {
-
+    constructor(
+        personService: PersonService
+    ) {
+        personService.initialize();
+    }
 }
